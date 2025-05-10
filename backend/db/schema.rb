@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2023_11_01_160721) do
 
-  create_table "bantuan_dana_beasiswas", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "bantuan_dana_non_beasiswas", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "bantuandanabeasiswa", primary_key: ["bantuan_dana_beasiswa_id", "mahasiswa_id", "penggalangan_dana_beasiswa_id"], charset: "utf8mb3", force: :cascade do |t|
     t.integer "bantuan_dana_beasiswa_id", null: false
     t.string "alasan_butuh_bantuan", limit: 500, null: false
@@ -65,19 +55,9 @@ ActiveRecord::Schema.define(version: 2023_11_01_160721) do
     t.index ["penanggung_jawab_non_beasiswa_id"], name: "fk_BantuanDanaNonBeasiswa_PenanggungJawabNonBeasiswa1_idx"
   end
 
-  create_table "civitas_akademikas", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "civitasakademika", primary_key: "nomor_induk", id: { type: :string, limit: 500 }, charset: "utf8mb3", force: :cascade do |t|
     t.string "nama", limit: 500, null: false
     t.index ["nomor_induk"], name: "nomor_induk_UNIQUE", unique: true
-  end
-
-  create_table "dokumen_sertifikats", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "dokumensertifikat", primary_key: ["jenis", "donatur_id"], charset: "utf8mb3", force: :cascade do |t|
@@ -104,11 +84,6 @@ ActiveRecord::Schema.define(version: 2023_11_01_160721) do
     t.index ["penggalangan_dana_beasiswa_id"], name: "fk_Donasi_PenggalanganDanaBeasiswa1_idx"
   end
 
-  create_table "donasis", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "donatur", primary_key: "nomor_telepon", id: { type: :string, limit: 500 }, charset: "utf8mb3", force: :cascade do |t|
     t.string "nama", limit: 500, null: false
     t.string "password_digest", limit: 500
@@ -116,35 +91,10 @@ ActiveRecord::Schema.define(version: 2023_11_01_160721) do
     t.index ["nomor_telepon"], name: "nomor_telepon_UNIQUE", unique: true
   end
 
-  create_table "donaturs", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "mahasiswa", primary_key: "nim", id: { type: :string, limit: 500 }, charset: "utf8mb3", force: :cascade do |t|
     t.string "nama", limit: 500, null: false
     t.string "nomor_telepon", limit: 500, null: false
     t.index ["nim"], name: "nim_UNIQUE", unique: true
-  end
-
-  create_table "mahasiswas", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "penanggung_jawab_non_beasiswa_has_penerima_non_beasiswas", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "penanggung_jawab_non_beasiswas", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "penanggung_jawabs", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "penanggungjawab", primary_key: "role", id: :integer, default: nil, charset: "utf8mb3", force: :cascade do |t|
@@ -168,20 +118,10 @@ ActiveRecord::Schema.define(version: 2023_11_01_160721) do
     t.index ["penerima_non_beasiswa_id"], name: "fk_PenanggungJawabNonBeasiswa_has_PenerimaNonBeasiswa_Pener_idx"
   end
 
-  create_table "penerima_non_beasiswas", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "penerimanonbeasiswa", primary_key: "nomor_induk", id: { type: :string, limit: 500 }, charset: "utf8mb3", force: :cascade do |t|
     t.string "nama", limit: 500, null: false
     t.string "nomor_telepon", limit: 500, null: false
     t.index ["nomor_induk"], name: "nomor_induk_UNIQUE", unique: true
-  end
-
-  create_table "penggalangan_dana_beasiswas", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "penggalangandanabeasiswa", primary_key: ["penggalangan_dana_beasiswa_id", "penanggung_jawab_id"], charset: "utf8mb3", force: :cascade do |t|
@@ -198,11 +138,6 @@ ActiveRecord::Schema.define(version: 2023_11_01_160721) do
     t.integer "penanggung_jawab_id", null: false
     t.index ["penanggung_jawab_id"], name: "fk_PenggalanganDanaBeasiswa_PenanggungJawab1_idx"
     t.index ["penggalangan_dana_beasiswa_id"], name: "penggalangan_dana_beasiswa_id_UNIQUE", unique: true
-  end
-
-  create_table "rekening_banks", charset: "utf8mb3", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "rekeningbank", primary_key: "nomor_rekening", id: { type: :string, limit: 500 }, charset: "utf8mb3", force: :cascade do |t|

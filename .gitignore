@@ -1,0 +1,57 @@
+# === Ruby on Rails ===
+*.rbc
+*.sassc
+.sass-cache/
+capybara-*.html
+log/
+tmp/
+db/*.sqlite3
+db/*.sqlite3-journal
+/public/system
+/public/uploads
+byebug_history
+coverage/
+/spec/tmp
+rerun.txt
+pickle-email-*.html
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+
+# Ignore PID files
+*.pid
+
+# Ignore dotenv environment variables file
+.env
+.env.*
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+# === React (Node.js frontend) ===
+node_modules/
+build/
+dist/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# === Common ===
+*.log
+*.swp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
